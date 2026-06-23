@@ -69,11 +69,10 @@ export function generateLocalBusinessSchema() {
         closes: '13:00',
       },
     ],
-    areaServed: [
-      { '@type': 'AdministrativeArea', name: 'Krapinsko-zagorska županija' },
-      { '@type': 'City', name: 'Zagreb' },
-      { '@type': 'Country', name: 'Hrvatska' },
-    ],
+    areaServed: {
+      '@type': 'Country',
+      name: 'Hrvatska',
+    },
     priceRange: '$$',
     image: `${BUSINESS.siteUrl}/og-image.png`,
     knowsAbout: [
@@ -115,10 +114,10 @@ export function generateServiceSchema(service: {
     description: service.description,
     url: getCanonicalUrl(`/usluge/${service.slug}`),
     provider: { '@id': `${BUSINESS.siteUrl}/#business` },
-    areaServed: [
-      { '@type': 'AdministrativeArea', name: 'Krapinsko-zagorska županija' },
-      { '@type': 'City', name: 'Zagreb' },
-    ],
+    areaServed: {
+      '@type': 'Country',
+      name: 'Hrvatska',
+    },
     serviceType: service.name,
   };
 }
