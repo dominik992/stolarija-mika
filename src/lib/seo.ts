@@ -15,9 +15,13 @@ export interface SEOProps {
 }
 
 export function getCanonicalUrl(path: string): string {
-  const base = BUSINESS.siteUrl.replace(/\/$/, '');
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `${base}${cleanPath}`;
+  const siteBase = BUSINESS.siteUrl.replace(/\/$/, '');
+  // Strip the base path prefix if present (e.g. /stolarija-mika/)
+  // to avoid doubling when siteUrl already includes it
+  const basePath = '/stolarija-mika';
+  let cleanPath = path.startsWith(basePath) ? path.slice(basePath.length) : path;
+  cleanPath = cleanPath.startsWith('/') ? cleanPath : `/${cleanPath}`;
+  return `${siteBase}${cleanPath}`;
 }
 
 export function generateLocalBusinessSchema() {

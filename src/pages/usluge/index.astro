@@ -4,6 +4,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CTASection from '../../components/CTASection.astro';
 import { services } from '../../data/services';
 
+const base = import.meta.env.BASE_URL;
+
 const icons: Record<string, string> = {
   'chef-hat': '<path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/>',
   'armchair': '<path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M5 18v2"/><path d="M19 18v2"/>',
@@ -40,11 +42,11 @@ const icons: Record<string, string> = {
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service) => (
           <a
-            href={`/usluge/${service.slug}`}
+            href={`${base}usluge/${service.slug}`}
             class="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg hover:border-primary/30 transition-all duration-300 no-underline"
           >
             <div class="aspect-[16/9] overflow-hidden">
-              <img src={`/images/services/${service.slug}.png`} alt={service.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}images/services/${service.slug}.png`} alt={service.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
             <div class="p-6">
               <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">

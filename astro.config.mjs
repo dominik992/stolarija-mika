@@ -3,7 +3,8 @@ import { defineConfig } from 'astro/config';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://stolarija-mika.hr',
+  site: 'https://dominik992.github.io',
+  base: '/stolarija-mika/',
   output: 'static',
   vite: {
     plugins: [tailwindcss()],

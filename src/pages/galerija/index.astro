@@ -6,6 +6,8 @@ import { projects } from '../../data/projects';
 import { getCanonicalUrl } from '../../lib/seo';
 import { BUSINESS } from '../../data/business-info';
 
+const base = import.meta.env.BASE_URL;
+
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
@@ -43,7 +45,7 @@ const structuredData = {
         {projects.map((project) => (
           <article class="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div class="aspect-[4/3] overflow-hidden">
-              <img src={project.images[0]} alt={project.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+              <img src={`${base}${project.images[0].slice(1)}`} alt={project.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
             </div>
 
             <div class="p-6">

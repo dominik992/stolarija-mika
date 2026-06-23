@@ -1,6 +1,7 @@
 ---
 import { projects } from '../data/projects';
 
+const base = import.meta.env.BASE_URL;
 const featured = projects.slice(0, 3);
 ---
 
@@ -21,7 +22,7 @@ const featured = projects.slice(0, 3);
         <div class="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-all duration-300">
           <!-- Project image -->
           <div class="aspect-[4/3] overflow-hidden">
-            <img src={project.images[0]} alt={project.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <img src={`${base}${project.images[0].slice(1)}`} alt={project.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
           </div>
           <div class="p-5">
             <span class="text-xs text-primary font-semibold uppercase tracking-wide">{project.serviceName}</span>
@@ -42,7 +43,7 @@ const featured = projects.slice(0, 3);
     <!-- View All -->
     <div class="text-center mt-10">
       <a
-        href="/galerija"
+        href={`${base}galerija`}
         class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-3 rounded-lg font-semibold transition-colors no-underline"
       >
         Pogledajte sve projekte

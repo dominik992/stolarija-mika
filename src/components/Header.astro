@@ -1,6 +1,7 @@
 ---
 import { BUSINESS, NAV_LINKS } from '../data/business-info';
 
+const base = import.meta.env.BASE_URL;
 const currentPath = Astro.url.pathname;
 ---
 
@@ -8,18 +9,19 @@ const currentPath = Astro.url.pathname;
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="flex items-center justify-between h-16 lg:h-20">
       <!-- Logo -->
-      <a href="/" class="flex items-center gap-3 no-underline shrink-0">
-        <img src="/logo.svg" alt={BUSINESS.name} class="h-12 lg:h-14 w-auto" />
+      <a href={base} class="flex items-center gap-3 no-underline shrink-0">
+        <img src={`${base}logo.svg`} alt={BUSINESS.name} class="h-12 lg:h-14 w-auto" />
       </a>
 
       <!-- Desktop Navigation -->
       <nav class="hidden lg:flex items-center gap-1">
         {NAV_LINKS.map((link) => {
-          const isActive = currentPath === link.href ||
-            (link.href !== '/' && currentPath.startsWith(link.href));
+          const fullHref = link.href === '/' ? base : `${base}${link.href.slice(1)}`;
+          const isActive = currentPath === fullHref ||
+            (link.href !== '/' && currentPath.startsWith(fullHref));
           return (
             <a
-              href={link.href}
+              href={fullHref}
               class:list={[
                 'px-4 py-2 rounded-lg text-sm font-medium transition-colors no-underline',
                 isActive
@@ -59,11 +61,12 @@ const currentPath = Astro.url.pathname;
   <div id="mobile-menu" class="hidden lg:hidden border-t border-border bg-white">
     <nav class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-1">
       {NAV_LINKS.map((link) => {
-        const isActive = currentPath === link.href ||
-          (link.href !== '/' && currentPath.startsWith(link.href));
+        const fullHref = link.href === '/' ? base : `${base}${link.href.slice(1)}`;
+        const isActive = currentPath === fullHref ||
+          (link.href !== '/' && currentPath.startsWith(fullHref));
         return (
           <a
-            href={link.href}
+            href={fullHref}
             class:list={[
               'px-4 py-3 rounded-lg font-medium transition-colors no-underline',
               isActive

@@ -1,5 +1,7 @@
 ---
 import { BUSINESS } from '../data/business-info';
+
+const base = import.meta.env.BASE_URL;
 ---
 
 <section class="py-20 bg-secondary relative overflow-hidden">
@@ -16,7 +18,7 @@ import { BUSINESS } from '../data/business-info';
 
     <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
       <a
-        href="/kontakt"
+        href={`${base}kontakt`}
         class="inline-flex items-center gap-2 bg-accent hover:bg-accent-light text-secondary px-8 py-4 rounded-lg font-semibold text-lg transition-colors no-underline"
       >
         Zatražite besplatnu ponudu

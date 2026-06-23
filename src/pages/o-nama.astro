@@ -4,6 +4,8 @@ import Breadcrumbs from '../components/Breadcrumbs.astro';
 import CTASection from '../components/CTASection.astro';
 import { BUSINESS } from '../data/business-info';
 
+const base = import.meta.env.BASE_URL;
+
 const values = [
   {
     title: 'Tradicija',
@@ -153,7 +155,7 @@ const values = [
       <div class="bg-card border border-border rounded-xl p-8 sm:p-10">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
           <div class="rounded-xl overflow-hidden aspect-[4/3]">
-            <img src="/images/hero/workshop.png" alt="Radionica Stolarije Mika" class="w-full h-full object-cover" />
+            <img src={`${base}images/hero/workshop.png`} alt="Radionica Stolarije Mika" class="w-full h-full object-cover" />
           </div>
 
           <div>
@@ -164,7 +166,7 @@ const values = [
               U radionici uvijek imamo zalihu kvalitetnog drva - hrasta, bukve, jasena i oraha - spremnog za vaš sljedeći projekt. Pozivamo vas da nas posjetite, razgledate radionicu i osobno se uvjerite u kvalitetu našeg rada.
             </p>
             <a
-              href="/kontakt"
+              href={`${base}kontakt`}
               class="inline-flex items-center gap-2 text-primary font-semibold hover:text-primary-dark transition-colors no-underline"
             >
               Posjetite nas

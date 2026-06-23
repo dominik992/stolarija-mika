@@ -5,6 +5,7 @@ import CTASection from '../../components/CTASection.astro';
 import { getServiceBySlug, getRelatedServices } from '../../data/services';
 import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema, getCanonicalUrl } from '../../lib/seo';
 
+const base = import.meta.env.BASE_URL;
 const service = getServiceBySlug('vrata')!;
 const relatedServices = getRelatedServices(service.relatedSlugs);
 
@@ -38,7 +39,7 @@ const icons: Record<string, string> = {
       <p class="text-foreground-light text-lg leading-relaxed max-w-3xl">{service.fullDescription}</p>
 
       <div class="rounded-xl overflow-hidden mt-8 max-h-[400px]">
-        <img src={`/images/services/${service.slug}.png`} alt={service.name} class="w-full h-full object-cover" />
+        <img src={`${base}images/services/${service.slug}.png`} alt={service.name} class="w-full h-full object-cover" />
       </div>
     </div>
   </section>
@@ -88,7 +89,7 @@ const icons: Record<string, string> = {
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
         {relatedServices.map((related) => (
           <a
-            href={`/usluge/${related.slug}`}
+            href={`${base}usluge/${related.slug}`}
             class="group bg-card border border-border rounded-xl p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300 no-underline"
           >
             <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">

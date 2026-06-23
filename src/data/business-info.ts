@@ -17,7 +17,7 @@ export const BUSINESS = {
   email: 'stolarija.mika@gmail.com',
   foundedYear: 1999,
   experienceYears: 25,
-  siteUrl: 'https://stolarija-mika.hr',
+  siteUrl: 'https://dominik992.github.io/stolarija-mika',
   siteName: 'Stolarija Mika',
   workingHours: {
     weekdays: 'Pon - Pet: 07:00 - 17:00',
