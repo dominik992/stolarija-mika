@@ -2,85 +2,68 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import CTASection from '../../components/CTASection.astro';
-import { projects } from '../../data/projects';
 import { getCanonicalUrl } from '../../lib/seo';
 import { BUSINESS } from '../../data/business-info';
+import fs from 'node:fs';
+import path from 'node:path';
 
 const base = import.meta.env.BASE_URL;
+
+// Dynamically read all gallery images
+const galleryDir = path.resolve('public/images/gallery');
+const galleryImages = fs.readdirSync(galleryDir)
+  .filter(f => /\.(jpg|jpeg|png|webp)$/i.test(f))
+  .sort()
+  .map((filename, i) => ({
+    src: `${base}images/gallery/${filename}`,
+    alt: `Stolarski rad ${i + 1} - Stolarija Mika`,
+  }));
 
 const structuredData = {
   '@context': 'https://schema.org',
   '@type': 'CollectionPage',
   name: 'Galerija radova - Stolarija Mika',
-  description: 'Pregledajte galeriju stolarskih radova - kuhinje, namještaj, stepenice, pergole i restauracije od kvalitetnog drva.',
+  description: 'Pregledajte galeriju stolarskih radova - kuhinje, namještaj, stepenice, pergole i više.',
   url: getCanonicalUrl('/galerija'),
   isPartOf: { '@id': `${BUSINESS.siteUrl}/#website` },
   about: { '@id': `${BUSINESS.siteUrl}/#business` },
   inLanguage: 'hr',
+  numberOfItems: galleryImages.length,
 };
-
-
 ---
 
 <BaseLayout
   title="Galerija radova | Stolarija Mika - Projekti i izvedbe"
-  description="Pregledajte galeriju stolarskih projekata Stolarije Mika. Kuhinje po mjeri, namještaj, stepenice, pergole i restauracije - 25 godina kvalitetne izrade u Zagorju."
+  description="Pregledajte galeriju stolarskih projekata Stolarije Mika. Kuhinje po mjeri, namještaj, stepenice, pergole, drvene kuće i više. 25 godina kvalitetne izrade."
   structuredData={structuredData}
 >
   <section class="py-16 sm:py-20 bg-background">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <Breadcrumbs items={[{ label: 'Galerija' }]} />
 
-      <div class="text-center mb-14">
-        <span class="text-primary text-sm font-semibold uppercase tracking-widest">Naši radovi</span>
-        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-secondary font-bold mt-2 mb-4">
-          Galerija projekata
+      <div class="mb-14">
+        <div class="w-12 h-1 bg-accent mb-4"></div>
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-secondary font-bold mb-4">
+          Naši radovi
         </h1>
-        <p class="text-foreground-light text-lg max-w-2xl mx-auto">
-          Svaki projekt je priča za sebe. Pogledajte izbor naših radova i uvjerite se u kvalitetu izrade.
+        <p class="text-foreground-light text-lg max-w-2xl">
+          Pogledajte izbor projekata iz naše radionice — od kuhinja i namještaja do stepenica, pergola i drvenih kuća. Svaki komad je ručno izrađen s pažnjom.
         </p>
+        <p class="text-foreground-light text-sm mt-2">{galleryImages.length} fotografija</p>
       </div>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {projects.map((project) => (
-          <article class="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
-            <div class="aspect-[4/3] overflow-hidden">
-              <img src={`${base}${project.images[0].slice(1)}`} alt={project.title} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-            </div>
-
-            <div class="p-6">
-              <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-3">
-                {project.serviceName}
-              </span>
-
-              <h2 class="font-heading text-xl font-bold text-secondary mb-2 group-hover:text-primary transition-colors">
-                {project.title}
-              </h2>
-
-              <p class="text-foreground-light text-sm mb-4 leading-relaxed">
-                {project.description}
-              </p>
-
-              <div class="flex items-center gap-4 text-xs text-foreground-light mb-3">
-                <span class="flex items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
-                  {project.location}
-                </span>
-                <span class="flex items-center gap-1">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
-                  {project.completedYear}
-                </span>
-              </div>
-
-              <div class="flex flex-wrap gap-2">
-                {project.materials.map((material) => (
-                  <span class="bg-muted text-foreground-light text-xs px-2 py-1 rounded-lg">
-                    {material}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </article>
+      <!-- Masonry-style gallery -->
+      <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
+        {galleryImages.map((img, i) => (
+          <div class="break-inside-avoid group relative overflow-hidden rounded-xl">
+            <img
+              src={img.src}
+              alt={img.alt}
+              class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+              loading={i < 6 ? 'eager' : 'lazy'}
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+          </div>
         ))}
       </div>
     </div>
