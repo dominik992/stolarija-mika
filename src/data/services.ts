@@ -39,7 +39,7 @@ export const services: Service[] = [
     ],
     seoTitle: 'Kuhinje po mjeri | Stolarija Mika - Donja Stubica',
     seoDescription: 'Izrađujemo kuhinje po mjeri od kvalitetnog drva. 25 godina iskustva, besplatno mjerenje i savjetovanje. Stolarija Mika, Donja Stubica.',
-    relatedSlugs: ['namjestaj', 'restauracija'],
+    relatedSlugs: ['namjestaj', 'stepenice'],
   },
   {
     slug: 'namjestaj',
@@ -63,7 +63,7 @@ export const services: Service[] = [
     ],
     seoTitle: 'Namještaj po mjeri | Stolarija Mika - Donja Stubica',
     seoDescription: 'Ručno izrađen namještaj po mjeri od kvalitetnog drva. Ormari, stolovi, komode i više. 25 godina iskustva. Stolarija Mika, Donja Stubica.',
-    relatedSlugs: ['kuhinje', 'restauracija'],
+    relatedSlugs: ['kuhinje', 'vrata'],
   },
   {
     slug: 'vrata',
@@ -179,29 +179,6 @@ export const services: Service[] = [
     seoTitle: 'Drvene pergole i nadstrešnice | Stolarija Mika',
     seoDescription: 'Drvene pergole i nadstrešnice po mjeri za terase i vrtove. Otporno na vremenske uvjete, elegantni dizajni. Stolarija Mika, Donja Stubica.',
     relatedSlugs: ['prozori', 'podovi'],
-  },
-  {
-    slug: 'restauracija',
-    name: 'Restauracija namještaja',
-    shortDescription: 'Vraćamo stari namještaj u život - restauracija, popravak i obnova drvenog namještaja.',
-    fullDescription: 'Svaki stari komad namještaja ima svoju priču. U Stolariji Mika specijalizirani smo za restauraciju i obnovu starog drvenog namještaja. Vraćamo život obiteljskim naslijeđima, antiknom namještaju i omiljenim komadima koji su kroz godine izgubili sjaj. Naš proces uključuje pažljivo čišćenje, popravak konstrukcije, zamjenu oštećenih dijelova, brušenje i završnu obradu koja poštuje originalni karakter komada.',
-    icon: 'paintbrush',
-    features: [
-      'Restauracija antiknog namještaja',
-      'Popravak konstruktivnih oštećenja',
-      'Zamjena oštećenih dijelova',
-      'Brušenje i nova završna obrada',
-      'Očuvanje originalnog karaktera',
-      'Konzervacija vrijednih komada',
-    ],
-    faqs: [
-      { question: 'Koje vrste namještaja restaurirate?', answer: 'Restauriramo sve vrste drvenog namještaja - od antiknih ormara i komoda do stolova, stolica, kreveta i vitrina. Specijalizirani smo za namještaj iz 19. i 20. stoljeća.' },
-      { question: 'Isplati li se restaurirati stari namještaj?', answer: 'U većini slučajeva da! Kvalitetno izrađen stari namještaj nakon restauracije može vrijediti više nego novi. Osim toga, čuvate obiteljsko naslijeđe i ekološki ste odgovorniji.' },
-      { question: 'Koliko traje restauracija?', answer: 'Ovisno o stanju i složenosti, restauracija može trajati od 2 tjedna do 2 mjeseca. Prije početka dajemo procjenu vremena i troškova.' },
-    ],
-    seoTitle: 'Restauracija namještaja | Stolarija Mika - Hrvatska',
-    seoDescription: 'Profesionalna restauracija i obnova starog drvenog namještaja. Antikni komadi, obiteljska naslijeđa. 25 godina iskustva. Stolarija Mika.',
-    relatedSlugs: ['namjestaj', 'kuhinje'],
   },
 ];
 
