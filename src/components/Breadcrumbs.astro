@@ -1,0 +1,44 @@
+---
+import { generateBreadcrumbSchema, getCanonicalUrl } from '../lib/seo';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+const schemaItems = [
+  { name: 'Početna', url: getCanonicalUrl('/') },
+  ...items.map((item) => ({
+    name: item.label,
+    url: item.href ? getCanonicalUrl(item.href) : getCanonicalUrl(Astro.url.pathname),
+  })),
+];
+
+const schema = generateBreadcrumbSchema(schemaItems);
+---
+
+<nav aria-label="Breadcrumb" class="mb-6">
+  <ol class="flex items-center gap-2 text-sm text-foreground-light flex-wrap">
+    <li>
+      <a href="/" class="hover:text-primary transition-colors no-underline">Početna</a>
+    </li>
+    {items.map((item, index) => (
+      <li class="flex items-center gap-2">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        {item.href && index < items.length - 1 ? (
+          <a href={item.href} class="hover:text-primary transition-colors no-underline">{item.label}</a>
+        ) : (
+          <span class="text-primary font-medium">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

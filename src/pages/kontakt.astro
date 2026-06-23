@@ -1,0 +1,193 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { BUSINESS } from '../data/business-info';
+import { generateLocalBusinessSchema } from '../lib/seo';
+import { services } from '../data/services';
+
+const structuredData = generateLocalBusinessSchema();
+---
+
+<BaseLayout
+  title="Kontakt | Stolarija Mika - Donja Stubica, Zagorje"
+  description="Kontaktirajte Stolariju Mika za besplatnu ponudu i savjetovanje. Nazovite 098 407 556 ili posjetite nas u Donjoj Stubici. Kuhinje, namještaj, vrata i više."
+  structuredData={structuredData}
+>
+  <section class="py-16 sm:py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Kontakt' }]} />
+
+      <div class="text-center mb-14">
+        <span class="text-primary text-sm font-semibold uppercase tracking-widest">Kontakt</span>
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-secondary font-bold mt-2 mb-4">
+          Javite nam se
+        </h1>
+        <p class="text-foreground-light text-lg max-w-2xl mx-auto">
+          Besplatno savjetovanje i procjena za vaš projekt. Ispunite formu ili nas kontaktirajte direktno.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-5 gap-12">
+        <!-- Contact Form -->
+        <div class="lg:col-span-3">
+          <div class="bg-card border border-border rounded-xl p-6 sm:p-8">
+            <h2 class="font-heading text-2xl text-secondary font-bold mb-6">Pošaljite upit</h2>
+
+            <form action="https://formspree.io/f/placeholder" method="POST" class="space-y-6">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="name" class="block text-sm font-medium text-secondary mb-2">Ime i prezime *</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    required
+                    placeholder="Vaše ime"
+                    class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="email" class="block text-sm font-medium text-secondary mb-2">Email adresa *</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    required
+                    placeholder="vas@email.com"
+                    class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  />
+                </div>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                <div>
+                  <label for="phone" class="block text-sm font-medium text-secondary mb-2">Telefon</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="098 123 4567"
+                    class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  />
+                </div>
+                <div>
+                  <label for="service" class="block text-sm font-medium text-secondary mb-2">Usluga</label>
+                  <select
+                    id="service"
+                    name="service"
+                    class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors"
+                  >
+                    <option value="">Odaberite uslugu</option>
+                    {services.map((service) => (
+                      <option value={service.name}>{service.name}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium text-secondary mb-2">Poruka *</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows="5"
+                  placeholder="Opišite svoj projekt ili postavite pitanje..."
+                  class="w-full px-4 py-3 rounded-lg border border-border bg-background text-foreground placeholder:text-foreground-light/50 focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary transition-colors resize-y"
+                ></textarea>
+              </div>
+
+              <button
+                type="submit"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary-dark text-white px-8 py-4 rounded-lg font-semibold text-lg transition-colors cursor-pointer"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                Pošaljite upit
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="lg:col-span-2 space-y-6">
+          <div class="bg-card border border-border rounded-xl p-6">
+            <h2 class="font-heading text-xl text-secondary font-bold mb-6">Kontakt informacije</h2>
+
+            <div class="space-y-5">
+              <!-- Address -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-secondary">Adresa</p>
+                  <p class="text-foreground-light text-sm">
+                    {BUSINESS.address.street}<br />
+                    {BUSINESS.address.postalCode} {BUSINESS.address.city}<br />
+                    {BUSINESS.address.region}
+                  </p>
+                </div>
+              </div>
+
+              <!-- Phone -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-secondary">Telefon</p>
+                  <a href={`tel:${BUSINESS.phone}`} class="text-primary text-sm font-semibold hover:text-primary-dark transition-colors no-underline">
+                    {BUSINESS.phoneDisplay}
+                  </a>
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-secondary">Email</p>
+                  <a href={`mailto:${BUSINESS.email}`} class="text-primary text-sm font-semibold hover:text-primary-dark transition-colors no-underline">
+                    {BUSINESS.email}
+                  </a>
+                </div>
+              </div>
+
+              <!-- Working Hours -->
+              <div class="flex items-start gap-4">
+                <div class="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center shrink-0">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <p class="text-sm font-medium text-secondary">Radno vrijeme</p>
+                  <p class="text-foreground-light text-sm">
+                    {BUSINESS.workingHours.weekdays}<br />
+                    {BUSINESS.workingHours.saturday}<br />
+                    {BUSINESS.workingHours.sunday}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Map -->
+          <div class="bg-card border border-border rounded-xl overflow-hidden">
+            <iframe
+              src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2770.0!2d${BUSINESS.geo.longitude}!3d${BUSINESS.geo.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNDbCsDAwJzI3LjAiTiAxNcKwNTcnMTcuMCJF!5e0!3m2!1shr!2shr!4v1`}
+              width="100%"
+              height="250"
+              style="border:0;"
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="Lokacija Stolarije Mika na karti"
+              class="w-full"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

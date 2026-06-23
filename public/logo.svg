@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 100" fill="none">
+  <!-- Wood grain decorative line -->
+  <path d="M0 50 Q40 42, 80 50 T160 50 T240 50 T320 50" stroke="#D4A24E" stroke-width="0.5" opacity="0.3"/>
+  <path d="M0 54 Q40 46, 80 54 T160 54 T240 54 T320 54" stroke="#D4A24E" stroke-width="0.3" opacity="0.2"/>
+
+  <!-- Saw blade icon integrated with M -->
+  <g transform="translate(10, 12)">
+    <!-- Circular saw blade -->
+    <circle cx="28" cy="28" r="24" fill="none" stroke="#A0713A" stroke-width="2.5"/>
+    <circle cx="28" cy="28" r="4" fill="#A0713A"/>
+    <!-- Saw teeth -->
+    <path d="M28 4 L31 10 L25 10 Z" fill="#A0713A"/>
+    <path d="M28 52 L31 46 L25 46 Z" fill="#A0713A"/>
+    <path d="M4 28 L10 25 L10 31 Z" fill="#A0713A"/>
+    <path d="M52 28 L46 25 L46 31 Z" fill="#A0713A"/>
+    <path d="M11 11 L16 14 L13 17 Z" fill="#A0713A"/>
+    <path d="M45 45 L40 42 L43 39 Z" fill="#A0713A"/>
+    <path d="M45 11 L42 16 L39 13 Z" fill="#A0713A"/>
+    <path d="M11 45 L14 40 L17 43 Z" fill="#A0713A"/>
+    <!-- Stylized M inside the blade -->
+    <text x="28" y="34" text-anchor="middle" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="22" fill="#483424">M</text>
+  </g>
+
+  <!-- STOLARIJA text -->
+  <text x="75" y="32" font-family="'Source Sans 3', 'Segoe UI', sans-serif" font-weight="600" font-size="11" letter-spacing="4" fill="#A0713A">STOLARIJA</text>
+
+  <!-- MIKA text -->
+  <text x="75" y="60" font-family="'Playfair Display', Georgia, serif" font-weight="700" font-size="32" fill="#483424">MIKA</text>
+
+  <!-- Tagline -->
+  <text x="75" y="78" font-family="'Source Sans 3', 'Segoe UI', sans-serif" font-weight="400" font-size="9" letter-spacing="1.5" fill="#A0713A">MAJSTORSTVO U DRVU OD 1999.</text>
+
+  <!-- Decorative line under tagline -->
+  <line x1="75" y1="84" x2="200" y2="84" stroke="#D4A24E" stroke-width="1" opacity="0.5"/>
+</svg>

@@ -1,0 +1,99 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTASection from '../../components/CTASection.astro';
+
+const blogPosts = [
+  {
+    slug: 'kako-odabrati-drvo',
+    title: 'Kako odabrati pravu vrstu drva za kuhinjske elemente',
+    excerpt: 'Hrast, bukva, jasen ili orah? Saznajte koja vrsta drva je idealna za vašu kuhinju s obzirom na izdržljivost, estetiku i cijenu.',
+    date: '2024-12-15',
+    readTime: '6 min',
+    category: 'Savjeti',
+  },
+  {
+    slug: 'odrzavanje-namjestaja',
+    title: '5 savjeta za održavanje drvenog namještaja',
+    excerpt: 'Praktični savjeti za dugotrajnost vašeg drvenog namještaja - od svakodnevnog čišćenja do periodičnog uljenja i zaštite.',
+    date: '2024-11-20',
+    readTime: '5 min',
+    category: 'Održavanje',
+  },
+  {
+    slug: 'prednosti-drva-nad-pvc',
+    title: 'Prednosti drva naspram PVC-a za prozore',
+    excerpt: 'Zašto su drveni prozori bolji izbor od PVC-a? Uspoređujemo toplinsku izolaciju, estetiku, ekologiju i dugotrajnost.',
+    date: '2024-10-08',
+    readTime: '7 min',
+    category: 'Usporedbe',
+  },
+];
+
+const gradients = [
+  'from-primary/15 to-accent/20',
+  'from-secondary/15 to-primary/20',
+  'from-accent/15 to-secondary/20',
+];
+
+function formatDate(dateStr: string): string {
+  const date = new Date(dateStr);
+  return date.toLocaleDateString('hr-HR', { day: 'numeric', month: 'long', year: 'numeric' });
+}
+---
+
+<BaseLayout
+  title="Blog - Savjeti za drvo i dizajn | Stolarija Mika"
+  description="Stručni savjeti o odabiru drva, održavanju namještaja i dizajnu interijera. Blog Stolarije Mika iz Donje Stubice."
+>
+  <section class="py-16 sm:py-20 bg-background">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Blog' }]} />
+
+      <div class="text-center mb-14">
+        <span class="text-primary text-sm font-semibold uppercase tracking-widest">Blog</span>
+        <h1 class="font-heading text-3xl sm:text-4xl lg:text-5xl text-secondary font-bold mt-2 mb-4">
+          Savjeti i inspiracija
+        </h1>
+        <p class="text-foreground-light text-lg max-w-2xl mx-auto">
+          Korisni savjeti o drvu, dizajnu i održavanju iz naše dugogodišnje prakse.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.map((post, index) => (
+          <article class="group bg-card border border-border rounded-xl overflow-hidden hover:shadow-lg transition-shadow duration-300">
+            <a href={`/blog/${post.slug}`} class="no-underline">
+              <div class={`aspect-[16/9] bg-gradient-to-br ${gradients[index % gradients.length]} flex items-center justify-center`}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" class="text-primary/40"><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-2 2Zm0 0a2 2 0 0 1-2-2v-9c0-1.1.9-2 2-2h2"/><path d="M18 14h-8"/><path d="M15 18h-5"/><path d="M10 6h8v4h-8V6Z"/></svg>
+              </div>
+
+              <div class="p-6">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
+                    {post.category}
+                  </span>
+                  <span class="text-foreground-light text-xs">{post.readTime} čitanja</span>
+                </div>
+
+                <h2 class="font-heading text-xl font-bold text-secondary mb-2 group-hover:text-primary transition-colors">
+                  {post.title}
+                </h2>
+
+                <p class="text-foreground-light text-sm leading-relaxed mb-4">
+                  {post.excerpt}
+                </p>
+
+                <time datetime={post.date} class="text-xs text-foreground-light">
+                  {formatDate(post.date)}
+                </time>
+              </div>
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

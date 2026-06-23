@@ -1,0 +1,89 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #A0713A;
+  --color-primary-light: #C49A6C;
+  --color-primary-dark: #7A5529;
+  --color-secondary: #483424;
+  --color-secondary-light: #6B5243;
+  --color-accent: #D4A24E;
+  --color-accent-light: #E4BF7A;
+  --color-background: #FAF8F5;
+  --color-card: #FFFFFF;
+  --color-muted: #F0EDE8;
+  --color-foreground: #2D1F14;
+  --color-foreground-light: #6B5D52;
+  --color-border: #E5DFD7;
+
+  --font-heading: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-body: 'Source Sans 3', 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  color: var(--color-foreground);
+  background-color: var(--color-background);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+:where(h1, h2, h3, h4, h5, h6) {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  line-height: 1.2;
+}
+
+a {
+  transition: color 0.2s ease;
+}
+
+/* Default link color only for unstyled links in body text */
+:where(a:not([class])) {
+  color: var(--color-primary);
+}
+
+:where(a:not([class])):hover {
+  color: var(--color-primary-dark);
+}
+
+::selection {
+  background-color: var(--color-accent-light);
+  color: var(--color-secondary);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.prose h2 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  margin-top: 2em;
+  margin-bottom: 0.75em;
+}
+
+.prose h3 {
+  font-family: var(--font-heading);
+  color: var(--color-secondary);
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+}
+
+.prose p {
+  margin-bottom: 1.25em;
+}
+
+.prose ul, .prose ol {
+  margin-bottom: 1.25em;
+  padding-left: 1.5em;
+}
+
+.prose li {
+  margin-bottom: 0.5em;
+}

@@ -1,0 +1,53 @@
+---
+import { services } from '../data/services';
+
+const previewServices = services.slice(0, 6);
+---
+
+<section class="py-24 bg-background">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- Section Heading -->
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-12">
+      <div>
+        <div class="w-12 h-1 bg-accent mb-4"></div>
+        <h2 class="font-heading text-3xl sm:text-4xl text-secondary font-bold">Naše usluge</h2>
+      </div>
+      <a
+        href="/usluge"
+        class="inline-flex items-center gap-2 text-primary hover:text-primary-dark font-medium no-underline text-sm"
+      >
+        Sve usluge
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+      </a>
+    </div>
+
+    <!-- Services Grid - image cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      {previewServices.map((service) => (
+        <a
+          href={`/usluge/${service.slug}`}
+          class="group relative block rounded-xl overflow-hidden aspect-[4/3] no-underline"
+        >
+          <!-- Image -->
+          <img
+            src={`/images/services/${service.slug}.png`}
+            alt={service.name}
+            class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+            loading="lazy"
+          />
+          <!-- Gradient overlay -->
+          <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
+          <!-- Content -->
+          <div class="absolute bottom-0 left-0 right-0 p-6" style="text-shadow: 0 1px 8px rgba(0,0,0,0.5);">
+            <h3 class="font-heading text-xl font-semibold mb-1" style="color: white;">{service.name}</h3>
+            <p class="text-sm line-clamp-2 leading-relaxed" style="color: rgba(255,255,255,0.8);">{service.shortDescription}</p>
+            <span class="inline-flex items-center gap-1 text-accent text-sm font-medium mt-3 group-hover:gap-2 transition-all">
+              Saznajte više
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </div>
+</section>

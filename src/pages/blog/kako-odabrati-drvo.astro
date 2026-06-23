@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTASection from '../../components/CTASection.astro';
+import { generateArticleSchema } from '../../lib/seo';
+
+const post = {
+  title: 'Kako odabrati pravu vrstu drva za kuhinjske elemente',
+  description: 'Vodič za odabir drva za kuhinjske elemente. Usporedba hrasta, bukve, jasena i oraha - izdržljivost, estetika, cijena i održavanje.',
+  slug: 'kako-odabrati-drvo',
+  publishedAt: '2024-12-15',
+  readTime: '6 min',
+  author: 'Stolarija Mika',
+  category: 'Savjeti',
+};
+
+const structuredData = generateArticleSchema(post);
+
+const relatedPosts = [
+  { slug: 'odrzavanje-namjestaja', title: '5 savjeta za održavanje drvenog namještaja' },
+  { slug: 'prednosti-drva-nad-pvc', title: 'Prednosti drva naspram PVC-a za prozore' },
+];
+---
+
+<BaseLayout
+  title="Kako odabrati pravu vrstu drva za kuhinjske elemente | Stolarija Mika"
+  description={post.description}
+  structuredData={structuredData}
+  article={{ publishedTime: post.publishedAt, author: post.author }}
+>
+  <article class="py-16 sm:py-20 bg-background">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Blog', href: '/blog' }, { label: 'Kako odabrati drvo' }]} />
+
+      <!-- Article Header -->
+      <header class="mb-10">
+        <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">
+          {post.category}
+        </span>
+        <h1 class="font-heading text-3xl sm:text-4xl text-secondary font-bold mb-4">
+          {post.title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 text-sm text-foreground-light">
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <time datetime={post.publishedAt}>15. prosinca 2024.</time>
+          </span>
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {post.readTime} čitanja
+          </span>
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            {post.author}
+          </span>
+        </div>
+      </header>
+
+      <!-- Article Content -->
+      <div class="prose">
+        <p>
+          Kuhinja je srce svakog doma, a kuhinjski elementi od masivnog drva donose toplinu, prirodnu ljepotu i dugotrajnost koju nijedno sintetičko rješenje ne može zamijeniti. No, svaka vrsta drva ima svoje specifične karakteristike koje je čine pogodnom za različite primjene. U ovom vodiču pomoći ćemo vam da odaberete idealnu vrstu drva za svoju kuhinju.
+        </p>
+
+        <h2>Hrast - kralj kuhinjskog drva</h2>
+        <p>
+          Hrast je bez sumnje najpopularniji izbor za kuhinjske elemente, i to s dobrim razlogom. Ova tvrda vrsta drva izuzetno je otporna na habanje, vlagu i mehanička oštećenja - sve čemu su kuhinjski elementi svakodnevno izloženi. Hrastovo drvo ima karakterističnu teksturu s izraženim godovima koji svakom komadu daju jedinstven karakter.
+        </p>
+        <p>
+          <strong>Prednosti hrasta:</strong> Iznimna izdržljivost, otpornost na vlagu, lijepa prirodna boja koja se s godinama produbljuje, lako se održava. Hrast je idealan za klasične i rustikalne kuhinje, ali jednako dobro funkcionira i u modernom dizajnu.
+        </p>
+        <p>
+          <strong>Nedostaci:</strong> Viša cijena u odnosu na neke druge vrste drva. Hrast je teži materijal, što treba uzeti u obzir kod zidnih elemenata.
+        </p>
+
+        <h2>Bukva - praktičan i pristupačan izbor</h2>
+        <p>
+          Bukva je izvrsna alternativa hrastu za one koji traže kvalitetno drvo po pristupačnijoj cijeni. Ova vrsta drva je izuzetno tvrda i elastična, otporna na udarce i mehanička oštećenja. Ima svijetlu, ujednačenu boju s finim godovima što joj daje čist i moderan izgled.
+        </p>
+        <p>
+          <strong>Prednosti bukve:</strong> Odlična tvrdoća, pristupačna cijena, ujednačena struktura, lako se obrađuje i lakira. Bukva je savršena za suvremene kuhinje minimalističkog dizajna.
+        </p>
+        <p>
+          <strong>Nedostaci:</strong> Osjetljivija na vlagu od hrasta, stoga zahtijeva kvalitetan zaštitni premaz, posebno u blizini sudopera i perilice posuđa.
+        </p>
+
+        <h2>Jasen - elegancija s karakterom</h2>
+        <p>
+          Jasen je drvo iznimne ljepote s izraženom teksturom i toplim tonovima. Po tvrdoći je sličan hrastu, a po elastičnosti ga čak i nadmašuje. Jasenovo drvo daje kuhinjskim elementima eleganciju i sofisticiranost koju je teško postići s drugim vrstama.
+        </p>
+        <p>
+          <strong>Prednosti jasena:</strong> Prekrasna tekstura, visoka tvrdoća i elastičnost, otpornost na habanje, svijetla boja koja osvjetljava prostor.
+        </p>
+        <p>
+          <strong>Nedostaci:</strong> Manja dostupnost na tržištu može utjecati na cijenu i rokove izrade.
+        </p>
+
+        <h2>Orah - luksuz i sofisticiranost</h2>
+        <p>
+          Orahovo drvo je sinonim za luksuz u stolarstvu. Tamna, bogata boja s promjenjivim tonovima od čokoladne do zlatno-smeđe čini svaki komad jedinstvenim umjetničkim djelom. Orah je srednje tvrd, ali iznimno stabilan i otporan na deformacije.
+        </p>
+        <p>
+          <strong>Prednosti oraha:</strong> Izvanredan estetski dojam, stabilnost, otpornost na deformacije, s godinama postaje još ljepši.
+        </p>
+        <p>
+          <strong>Nedostaci:</strong> Najviša cijena među ovim vrstama, mekši od hrasta i bukve pa zahtijeva pažljivije postupanje.
+        </p>
+
+        <h2>Praktični savjeti za odabir</h2>
+        <p>
+          Prilikom odabira drva za kuhinju, razmislite o sljedećim faktorima:
+        </p>
+        <ul>
+          <li><strong>Stil kuhinje:</strong> Rustikalne kuhinje odlično funkcioniraju s hrastom, moderne s bukvom ili jasenom, a luksuzne s orahom.</li>
+          <li><strong>Budžet:</strong> Bukva je najisplativija opcija, a orah najskuplji. Moguće je i kombinirati vrste drva - primjerice hrast za radne plohe i bukvu za korpuse.</li>
+          <li><strong>Održavanje:</strong> Ako želite minimalno održavanje, hrast je najzahvalniji. Bukva i jasen zahtijevaju redovitiji premaz u zonama izloženim vlazi.</li>
+          <li><strong>Trajnost:</strong> Kvalitetno izrađena kuhinja od bilo koje od ovih vrsta drva trajat će desetljećima uz pravilno održavanje.</li>
+        </ul>
+
+        <h2>Zaključak</h2>
+        <p>
+          Ne postoji univerzalno "najbolje" drvo za kuhinju - pravi izbor ovisi o vašem stilu, budžetu i prioritetima. Ono što je zajedničko svim ovim vrstama je da su prirodne, zdrave i dugotrajne. U Stolariji Mika pomoći ćemo vam odabrati idealnu vrstu drva za vaš projekt i izraditi kuhinju koja će vam služiti godinama. Kontaktirajte nas za besplatno savjetovanje!
+        </p>
+      </div>
+
+      <!-- Related Posts -->
+      <div class="mt-14 pt-10 border-t border-border">
+        <h3 class="font-heading text-xl text-secondary font-bold mb-6">Povezani članci</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {relatedPosts.map((related) => (
+            <a
+              href={`/blog/${related.slug}`}
+              class="block bg-card border border-border rounded-xl p-5 hover:shadow-md hover:border-primary/30 transition-all no-underline"
+            >
+              <h4 class="font-heading text-base font-bold text-secondary hover:text-primary transition-colors">
+                {related.title}
+              </h4>
+              <span class="text-primary text-sm mt-2 inline-flex items-center gap-1">
+                Pročitajte više
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTASection />
+</BaseLayout>

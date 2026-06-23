@@ -1,0 +1,146 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTASection from '../../components/CTASection.astro';
+import { generateArticleSchema } from '../../lib/seo';
+
+const post = {
+  title: 'Prednosti drva naspram PVC-a za prozore',
+  description: 'Usporedba drvenih i PVC prozora. Toplinska izolacija, estetika, ekologija, dugotrajnost, zdravlje i vrijednost nekretnine.',
+  slug: 'prednosti-drva-nad-pvc',
+  publishedAt: '2024-10-08',
+  readTime: '7 min',
+  author: 'Stolarija Mika',
+  category: 'Usporedbe',
+};
+
+const structuredData = generateArticleSchema(post);
+
+const relatedPosts = [
+  { slug: 'kako-odabrati-drvo', title: 'Kako odabrati pravu vrstu drva za kuhinjske elemente' },
+  { slug: 'odrzavanje-namjestaja', title: '5 savjeta za održavanje drvenog namještaja' },
+];
+---
+
+<BaseLayout
+  title="Prednosti drva naspram PVC-a za prozore | Stolarija Mika"
+  description={post.description}
+  structuredData={structuredData}
+  article={{ publishedTime: post.publishedAt, author: post.author }}
+>
+  <article class="py-16 sm:py-20 bg-background">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Blog', href: '/blog' }, { label: 'Prednosti drva nad PVC-om' }]} />
+
+      <!-- Article Header -->
+      <header class="mb-10">
+        <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">
+          {post.category}
+        </span>
+        <h1 class="font-heading text-3xl sm:text-4xl text-secondary font-bold mb-4">
+          {post.title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 text-sm text-foreground-light">
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <time datetime={post.publishedAt}>8. listopada 2024.</time>
+          </span>
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {post.readTime} čitanja
+          </span>
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            {post.author}
+          </span>
+        </div>
+      </header>
+
+      <!-- Article Content -->
+      <div class="prose">
+        <p>
+          Pitanje "drvo ili PVC?" jedno je od najčešćih dilema prilikom odabira prozora za dom. Iako su PVC prozori u posljednjih dvadesetak godina postali dominantan izbor na tržištu zahvaljujući nižoj cijeni, drveni prozori nude niz prednosti koje ih čine superiornim izborom za one koji cijene kvalitetu, estetiku i zdravo stanovanje. Evo zašto.
+        </p>
+
+        <h2>Toplinska izolacija - prirodna prednost drva</h2>
+        <p>
+          Drvo je prirodni izolator koji značajno nadmašuje PVC u sposobnosti zadržavanja topline. Koeficijent toplinske vodljivosti drva iznosi oko 0,13 W/mK, dok je kod PVC-a oko 0,16 W/mK. U praksi to znači da drveni prozori bolje zadržavaju toplinu zimi i hladnoću ljeti, što rezultira nižim troškovima grijanja i hlađenja.
+        </p>
+        <p>
+          Moderna drvena stolarija u kombinaciji s troslojnim IZO staklom postiže izvanredne energetske performanse. Drveni okvir ne provodi toplinu poput PVC-a koji ima šuplje komore, već toplinu ravnomjerno raspoređuje po cijeloj konstrukciji, što eliminira hladne mostove i pojavu kondenzacije.
+        </p>
+
+        <h2>Estetika - toplina koju plastika ne može imitirati</h2>
+        <p>
+          Koliko god proizvođači PVC prozora pokušavali imitirati izgled drva folijama i teksturama, plastika nikada ne može u potpunosti reproducirati toplinu, dubinu i karakter pravog drva. Svaki drveni prozor ima jedinstvenu teksturu godova koja mu daje autentičnost i šarm.
+        </p>
+        <p>
+          Drveni prozori posebno dolaze do izražaja na starijim građevinama, tradicionalnim kućama i objektima u zaštićenim zonama gdje PVC stolarija vizualno narušava karakter arhitekture. No i u modernim kućama, drvo unosi toplinu i prirodnost koju stanari svakodnevno osjećaju.
+        </p>
+
+        <h2>Ekologija - odgovoran izbor za planet</h2>
+        <p>
+          Drvo je obnovljiv i biorazgradiv materijal s minimalnim ugljičnim otiskom. Stablo tijekom rasta apsorbira CO2 iz atmosfere, a drveni prozor taj ugljik zadržava tijekom cijelog vijeka trajanja. Na kraju životnog vijeka, drvo se može reciklirati ili se prirodno razgradi bez štetnih posljedica za okoliš.
+        </p>
+        <p>
+          S druge strane, PVC je derivat nafte čija proizvodnja zahtijeva značajne količine energije i kemikalija. Recikliranje PVC-a je složen i energetski zahtjevan proces, a u slučaju nepravilnog odlaganja, PVC ostaje u okolišu stotinama godina. Za ekološki osviještene vlasnike domova, drveni prozori su jedini logičan izbor.
+        </p>
+
+        <h2>Dugotrajnost - investicija za generacije</h2>
+        <p>
+          Uz pravilno održavanje, drveni prozori traju 50 i više godina - znatno duže od PVC prozora čiji je prosječni vijek trajanja 25-30 godina. S vremenom, PVC prozori gube elastičnost, žute pod utjecajem sunca i postaju krti, dok drveni prozori s godinama dobivaju na karakteru i patini.
+        </p>
+        <p>
+          Velika prednost drvenih prozora je mogućnost obnove. Oštećeni ili istrošeni drveni prozor može se obrusiti, popraviti i ponovo premazati, čime se potpuno obnavlja njegov izgled i funkcionalnost. PVC prozor koji je jednom oštećen ili deformiran najčešće se mora zamijeniti u cijelosti.
+        </p>
+
+        <h2>Zdravlje i kvaliteta stanovanja</h2>
+        <p>
+          Drvo je higroskopan materijal - sposobno je upijati i otpuštati vlagu iz zraka, čime pridonosi regulaciji mikroklime u prostoriji. Ova prirodna "respiracija" drva pomaže u održavanju optimalne vlažnosti zraka, što je važno za zdravlje dišnog sustava.
+        </p>
+        <p>
+          PVC kao sintetički materijal ne posjeduje ovu sposobnost. Štoviše, pri visokim temperaturama PVC može otpuštati hlapljive organske spojeve (VOC) koji mogu utjecati na kvalitetu zraka u zatvorenom prostoru. Drveni prozori od prirodno obrađenog drva ne ispuštaju štetne tvari i pridonose zdravijem životnom okruženju.
+        </p>
+
+        <h2>Vrijednost nekretnine</h2>
+        <p>
+          Drveni prozori povećavaju tržišnu vrijednost nekretnine. Potencijalni kupci prepoznaju kvalitetu drvene stolarije kao znak dobro održavanog i kvalitetno građenog doma. U segmentu premium nekretnina, drveni prozori su gotovo obvezni standard koji kupci očekuju.
+        </p>
+        <p>
+          Iako je početna investicija u drvene prozore veća od PVC-a, dugoročno se isplati kroz uštedu energije, dulji vijek trajanja, mogućnost obnove i veću vrijednost nekretnine. Kad se sve zbroji, drveni prozori su ekonomičniji izbor na duži rok.
+        </p>
+
+        <h2>Zaključak</h2>
+        <p>
+          Drveni prozori su superioran izbor u gotovo svakom aspektu - od toplinske izolacije i estetike, preko ekologije i zdravlja, do dugotrajnosti i vrijednosti nekretnine. Jedina kategorija u kojoj PVC vodi je početna cijena, no ta ušteda se dugoročno poništava kraćim vijekom trajanja i nemogućnošću obnove.
+        </p>
+        <p>
+          U Stolariji Mika izrađujemo drvene prozore od najkvalitetnijih vrsta drva s modernim IZO staklima. Ako razmišljate o zamjeni prozora, kontaktirajte nas za besplatnu procjenu i uvjerite se da kvaliteta ne mora biti nedostupna.
+        </p>
+      </div>
+
+      <!-- Related Posts -->
+      <div class="mt-14 pt-10 border-t border-border">
+        <h3 class="font-heading text-xl text-secondary font-bold mb-6">Povezani članci</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {relatedPosts.map((related) => (
+            <a
+              href={`/blog/${related.slug}`}
+              class="block bg-card border border-border rounded-xl p-5 hover:shadow-md hover:border-primary/30 transition-all no-underline"
+            >
+              <h4 class="font-heading text-base font-bold text-secondary hover:text-primary transition-colors">
+                {related.title}
+              </h4>
+              <span class="text-primary text-sm mt-2 inline-flex items-center gap-1">
+                Pročitajte više
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTASection />
+</BaseLayout>

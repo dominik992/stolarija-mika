@@ -1,0 +1,74 @@
+---
+import { BUSINESS } from '../data/business-info';
+---
+
+<section class="py-24 bg-secondary text-white relative overflow-hidden">
+  <!-- Subtle texture -->
+  <div class="absolute inset-0 opacity-[0.03]" style="background-image: url('data:image/svg+xml,%3Csvg width=&quot;80&quot; height=&quot;80&quot; viewBox=&quot;0 0 80 80&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;%3E%3Cpath d=&quot;M0 40 Q20 35 40 40 T80 40&quot; stroke=&quot;white&quot; stroke-width=&quot;0.5&quot; fill=&quot;none&quot;/%3E%3C/svg%3E'); background-size: 80px 80px;"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <!-- Left: content -->
+      <div>
+        <div class="w-12 h-1 bg-accent mb-6"></div>
+        <h2 class="font-heading text-3xl sm:text-4xl font-bold text-white mb-6">
+          Zašto nam klijenti<br />vjeruju već {BUSINESS.experienceYears} godina?
+        </h2>
+        <p class="text-white/70 leading-relaxed mb-10 max-w-lg">
+          Iza svakog komada namještaja koji napustio našu radionicu stoji ručni rad, strpljenje i posvećenost. Ne radimo serijski — svaki projekt je priča za sebe.
+        </p>
+
+        <!-- Stats row -->
+        <div class="grid grid-cols-3 gap-8">
+          <div>
+            <div class="text-3xl sm:text-4xl font-heading font-bold text-accent">{BUSINESS.experienceYears}+</div>
+            <div class="text-white/60 text-sm mt-1">godina iskustva</div>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-heading font-bold text-accent">500+</div>
+            <div class="text-white/60 text-sm mt-1">projekata</div>
+          </div>
+          <div>
+            <div class="text-3xl sm:text-4xl font-heading font-bold text-accent">8</div>
+            <div class="text-white/60 text-sm mt-1">vrsta usluga</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: values list -->
+      <div class="space-y-8">
+        <div class="flex gap-5">
+          <div class="shrink-0 w-12 h-12 rounded-full border border-accent/30 flex items-center justify-center text-accent font-heading font-bold text-lg">01</div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-white mb-1">Tradicija i iskustvo</h3>
+            <p class="text-white/60 text-sm leading-relaxed">Stolarski zanat učen od malih nogu u zagorskom kraju. Znanje koje se ne može naučiti iz knjiga — samo godinama rada s drvom.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="shrink-0 w-12 h-12 rounded-full border border-accent/30 flex items-center justify-center text-accent font-heading font-bold text-lg">02</div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-white mb-1">Kvalitetni materijali</h3>
+            <p class="text-white/60 text-sm leading-relaxed">Hrast, bukva, orah, jasen — biramo provjerene dobavljače i samo drvo koje zadovoljava naše standarde. Nikad ne štedimo na materijalu.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="shrink-0 w-12 h-12 rounded-full border border-accent/30 flex items-center justify-center text-accent font-heading font-bold text-lg">03</div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-white mb-1">Sve po vašoj mjeri</h3>
+            <p class="text-white/60 text-sm leading-relaxed">Nema gotovih rješenja — svaki komad prilagođavamo vašem prostoru, ukusu i budžetu. Vi odlučujete, mi ostvarujemo.</p>
+          </div>
+        </div>
+
+        <div class="flex gap-5">
+          <div class="shrink-0 w-12 h-12 rounded-full border border-accent/30 flex items-center justify-center text-accent font-heading font-bold text-lg">04</div>
+          <div>
+            <h3 class="font-heading text-lg font-semibold text-white mb-1">Osobni pristup</h3>
+            <p class="text-white/60 text-sm leading-relaxed">Radite direktno s majstorom, bez posrednika. Od prvog razgovora do montaže — Mika je tu za vas. Ista osoba, od početka do kraja.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

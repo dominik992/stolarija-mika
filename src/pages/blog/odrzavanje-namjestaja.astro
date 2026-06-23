@@ -1,0 +1,138 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTASection from '../../components/CTASection.astro';
+import { generateArticleSchema } from '../../lib/seo';
+
+const post = {
+  title: '5 savjeta za održavanje drvenog namještaja',
+  description: 'Praktični savjeti za dugotrajnost drvenog namještaja - redovito čišćenje, zaštita od vlage, pravilna sredstva, zaštita od sunca i periodično uljenje.',
+  slug: 'odrzavanje-namjestaja',
+  publishedAt: '2024-11-20',
+  readTime: '5 min',
+  author: 'Stolarija Mika',
+  category: 'Održavanje',
+};
+
+const structuredData = generateArticleSchema(post);
+
+const relatedPosts = [
+  { slug: 'kako-odabrati-drvo', title: 'Kako odabrati pravu vrstu drva za kuhinjske elemente' },
+  { slug: 'prednosti-drva-nad-pvc', title: 'Prednosti drva naspram PVC-a za prozore' },
+];
+---
+
+<BaseLayout
+  title="5 savjeta za održavanje drvenog namještaja | Stolarija Mika"
+  description={post.description}
+  structuredData={structuredData}
+  article={{ publishedTime: post.publishedAt, author: post.author }}
+>
+  <article class="py-16 sm:py-20 bg-background">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Blog', href: '/blog' }, { label: 'Održavanje namještaja' }]} />
+
+      <!-- Article Header -->
+      <header class="mb-10">
+        <span class="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full mb-4">
+          {post.category}
+        </span>
+        <h1 class="font-heading text-3xl sm:text-4xl text-secondary font-bold mb-4">
+          {post.title}
+        </h1>
+        <div class="flex flex-wrap items-center gap-4 text-sm text-foreground-light">
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>
+            <time datetime={post.publishedAt}>20. studenoga 2024.</time>
+          </span>
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            {post.readTime} čitanja
+          </span>
+          <span class="flex items-center gap-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg>
+            {post.author}
+          </span>
+        </div>
+      </header>
+
+      <!-- Article Content -->
+      <div class="prose">
+        <p>
+          Drveni namještaj je investicija koja može trajati generacijama - ako se pravilno održava. Drvo je živ materijal koji reagira na uvjete u okolini, pa pravilna njega nije samo estetsko pitanje, već i pitanje dugotrajnosti. Evo pet ključnih savjeta koje smo kroz 25 godina iskustva izdvojili kao najvažnije za očuvanje ljepote i funkcionalnosti vašeg drvenog namještaja.
+        </p>
+
+        <h2>1. Redovito brisanje prašine</h2>
+        <p>
+          Prašina se može činiti bezazlenom, ali čestice prašine djeluju poput finog brusnog papira i s vremenom mogu oštetiti površinu drva. Redovito brisanje prašine mekanom krpom od mikrovlakana najjednostavniji je, a ujedno i najvažniji korak u održavanju drvenog namještaja.
+        </p>
+        <p>
+          Preporučujemo brisanje prašine barem dva puta tjedno. Uvijek brišite u smjeru godova drva, nikada kružnim pokretima. Izbjegavajte perjanice jer one samo podižu prašinu u zrak koja se zatim ponovo taloži. Suha krpa od mikrovlakana privlači prašinu statičkim elektricitetom i najučinkovitije je rješenje.
+        </p>
+
+        <h2>2. Zaštita od vlage</h2>
+        <p>
+          Vlaga je najveći neprijatelj drvenog namještaja. Pretjerana vlažnost može uzrokovati bubrenje, deformacije i pojavu plijesni, dok prevelika suhoća dovodi do pucanja i razdvajanja drvenih elemenata. Idealna relativna vlažnost za drveni namještaj je između 40% i 60%.
+        </p>
+        <p>
+          Nikada ne ostavljajte mokre čaše ili tanjure izravno na drvenoj površini - uvijek koristite podloške i podmetače. Ako se tekućina prolije, odmah je obrišite suhom krpom. U prostorima s povećanom vlažnošću, poput kupaonice ili kuhinje, razmislite o korištenju odvlaživača zraka. Tijekom zimskih mjeseci, kada grijanje isušuje zrak, ovlaživač može pomoći u održavanju optimalnog nivoa vlage.
+        </p>
+
+        <h2>3. Korištenje pravih sredstava za čišćenje</h2>
+        <p>
+          Mnogi komercijalni proizvodi za čišćenje sadrže agresivne kemikalije koje mogu oštetiti završni premaz drvenog namještaja. Izbjegavajte sredstva koja sadrže amonijak, izbjeljivač ili abrazivne čestice. Umjesto toga, koristite blage otopine posebno namijenjene za drvo.
+        </p>
+        <p>
+          Za svakodnevno čišćenje dovoljno je krpu lagano navlažiti vodom ili blagom otopinom vode i neutralnog sapuna. Postoje i specijalizirani proizvodi za njegu drvenih površina koji čiste, hrane i štite drvo istovremeno. Nakon mokrog čišćenja, uvijek osušite površinu suhom krpom. Izbjegavajte korištenje spužvi s grubom stranom jer mogu ostaviti ogrebotine na lakiranoj ili uljenom površini.
+        </p>
+
+        <h2>4. Izbjegavanje izravnog sunčevog svjetla</h2>
+        <p>
+          Dugotrajna izloženost izravnom sunčevom svjetlu uzrokuje blijeđenje i isušivanje drva. UV zrake razgrađuju lignin u drvu, što dovodi do promjene boje i gubitka sjaja. Ovaj proces je postupan, pa ga često primijetimo tek kada je šteta već značajna.
+        </p>
+        <p>
+          Namještaj postavite tako da nije izložen izravnom sunčevom svjetlu tijekom većeg dijela dana. Koristite zavjese, rolete ili UV zaštitne folije na prozorima. Ako to nije moguće, povremeno rotirajte predmete na površini namještaja kako bi se boja ujednačeno mijenjala. Stolovi i komode koji stoje blizu prozora posebno su ugroženi i zahtijevaju češće podmazivanje ili lakiranje zaštitnim sredstvima s UV filterom.
+        </p>
+
+        <h2>5. Periodično uljenje i voskanje</h2>
+        <p>
+          Drvo s vremenom gubi prirodna ulja i vlagu, što ga čini krtim i podložnim oštećenjima. Periodično uljenje ili voskanje vraća drvu elastičnost, produbljuje boju i stvara zaštitni sloj protiv vlage i mrlja.
+        </p>
+        <p>
+          Za namještaj s uljanom završnom obradom preporučujemo nanošenje ulja za drvo svakih 6 do 12 mjeseci, ovisno o intenzitetu korištenja. Koristite kvalitetna ulja za drvo - laneno, tungo ili specijalizirana ulja za namještaj. Nanesite tanki sloj mekanom krpom u smjeru godova, pustite da se upije 15-20 minuta, a zatim izbrišite višak čistom krpom.
+        </p>
+        <p>
+          Za lakirani namještaj dovoljno je povremeno koristiti sredstvo za njegu lakiranih drvenih površina. Ako primijetite ogrebotine na lakiranoj površini, moguće ih je popraviti specijalnim olovkama za drvo ili voskom za popravak u odgovarajućoj boji.
+        </p>
+
+        <h2>Zaključak</h2>
+        <p>
+          Održavanje drvenog namještaja ne zahtijeva mnogo vremena ni truda, ali zahtijeva redovitost i prave postupke. Slijedeći ovih pet savjeta, vaš drveni namještaj će zadržati svoju ljepotu i funkcionalnost godinama, pa čak i desetljećima. Ako imate pitanja o održavanju ili vam je potrebna profesionalna obnova namještaja, slobodno nas kontaktirajte - rado ćemo pomoći.
+        </p>
+      </div>
+
+      <!-- Related Posts -->
+      <div class="mt-14 pt-10 border-t border-border">
+        <h3 class="font-heading text-xl text-secondary font-bold mb-6">Povezani članci</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {relatedPosts.map((related) => (
+            <a
+              href={`/blog/${related.slug}`}
+              class="block bg-card border border-border rounded-xl p-5 hover:shadow-md hover:border-primary/30 transition-all no-underline"
+            >
+              <h4 class="font-heading text-base font-bold text-secondary hover:text-primary transition-colors">
+                {related.title}
+              </h4>
+              <span class="text-primary text-sm mt-2 inline-flex items-center gap-1">
+                Pročitajte više
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+              </span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <CTASection />
+</BaseLayout>

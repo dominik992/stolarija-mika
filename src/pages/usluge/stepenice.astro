@@ -1,0 +1,110 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import CTASection from '../../components/CTASection.astro';
+import { getServiceBySlug, getRelatedServices } from '../../data/services';
+import { generateServiceSchema, generateFAQSchema, generateBreadcrumbSchema, getCanonicalUrl } from '../../lib/seo';
+
+const service = getServiceBySlug('stepenice')!;
+const relatedServices = getRelatedServices(service.relatedSlugs);
+
+const structuredData = [
+  generateServiceSchema({ name: service.name, description: service.fullDescription, slug: service.slug }),
+  generateFAQSchema(service.faqs),
+];
+
+const icons: Record<string, string> = {
+  'chef-hat': '<path d="M17 21a1 1 0 0 0 1-1v-5.35c0-.457.316-.844.727-1.041a4 4 0 0 0-2.134-7.589 5 5 0 0 0-9.186 0 4 4 0 0 0-2.134 7.588c.411.198.727.585.727 1.041V20a1 1 0 0 0 1 1Z"/><path d="M6 17h12"/>',
+  'armchair': '<path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3"/><path d="M3 16a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5a2 2 0 0 0-4 0v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V11a2 2 0 0 0-4 0z"/><path d="M5 18v2"/><path d="M19 18v2"/>',
+  'door-open': '<path d="M13 4h3a2 2 0 0 1 2 2v14"/><path d="M2 20h3"/><path d="M13 20h9"/><path d="M10 12v.01"/><path d="M13 4.562v16.157a1 1 0 0 1-1.242.97L5 20V5.562a2 2 0 0 1 1.515-1.94l4-1A2 2 0 0 1 13 4.561Z"/>',
+  'panel-top': '<rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/>',
+  'stairs': '<path d="M22 5v1a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2z"/><path d="M2 10h6"/><path d="M8 10v4h6"/><path d="M14 14v4h8"/>',
+  'layers': '<path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22.54 12.43-10 4.55a2 2 0 0 1-1.07 0l-10-4.55"/><path d="m22.54 16.43-10 4.55a2 2 0 0 1-1.07 0l-10-4.55"/>',
+  'tent-tree': '<circle cx="4" cy="4" r="2"/><path d="m14 5 3-3 3 3"/><path d="m14 10 3-3 3 3"/><path d="M17 14V2"/><path d="M17 14H7l-5 8h20Z"/><path d="M4 22v-4"/>',
+  'paintbrush': '<path d="m14.622 17.897-10.68-2.913"/><path d="M18.376 2.622a1 1 0 1 1 3.002 3.002L17.36 9.643a.5.5 0 0 0 0 .707l.944.944a2.41 2.41 0 0 1 0 3.408l-.944.944a.5.5 0 0 1-.707 0L8.354 7.348a.5.5 0 0 1 0-.707l.944-.944a2.41 2.41 0 0 1 3.408 0l.944.944a.5.5 0 0 0 .707 0z"/><path d="M9 8c-1.804 2.71-3.97 3.46-6.583 3.948a.507.507 0 0 0-.302.819l7.32 8.883a1 1 0 0 0 1.185.204C12.735 20.405 16 16.792 16 15"/>',
+};
+---
+
+<BaseLayout
+  title={service.seoTitle}
+  description={service.seoDescription}
+  structuredData={structuredData}
+>
+  <!-- Page Header -->
+  <section class="py-16 bg-muted">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <Breadcrumbs items={[{ label: 'Usluge', href: '/usluge' }, { label: service.name }]} />
+      <h1 class="font-heading text-4xl sm:text-5xl text-secondary font-bold mb-6">{service.name}</h1>
+      <p class="text-foreground-light text-lg leading-relaxed max-w-3xl">{service.fullDescription}</p>
+
+      <div class="rounded-xl overflow-hidden mt-8 max-h-[400px]">
+        <img src={`/images/services/${service.slug}.png`} alt={service.name} class="w-full h-full object-cover" />
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section class="py-20 bg-background">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading text-3xl text-secondary font-bold mb-10">Što nudimo</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {service.features.map((feature) => (
+          <div class="flex items-start gap-3 bg-card border border-border rounded-xl p-5">
+            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary shrink-0 mt-0.5"><path d="M20 6 9 17l-5-5"/></svg>
+            <span class="text-foreground">{feature}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="py-20 bg-muted">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-primary text-sm font-semibold uppercase tracking-widest">FAQ</span>
+        <h2 class="font-heading text-3xl sm:text-4xl text-secondary font-bold mt-2 mb-4">Česta pitanja</h2>
+      </div>
+      <div class="space-y-4">
+        {service.faqs.map((faq) => (
+          <details class="group bg-card border border-border rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-secondary hover:text-primary transition-colors list-none">
+              <span>{faq.question}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 ml-4 transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-4 text-foreground-light leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Services -->
+  <section class="py-20 bg-background">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="font-heading text-3xl text-secondary font-bold mb-10 text-center">Povezane usluge</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {relatedServices.map((related) => (
+          <a
+            href={`/usluge/${related.slug}`}
+            class="group bg-card border border-border rounded-xl p-6 hover:shadow-lg hover:border-primary/30 transition-all duration-300 no-underline"
+          >
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-primary" set:html={icons[related.icon] || icons['layers']} />
+            </div>
+            <h3 class="font-heading text-xl text-secondary font-semibold mb-2 group-hover:text-primary transition-colors">{related.name}</h3>
+            <p class="text-foreground-light text-sm leading-relaxed">{related.shortDescription}</p>
+            <span class="inline-flex items-center gap-1 text-primary font-medium text-sm mt-4 group-hover:gap-2 transition-all">
+              Saznajte više
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>

@@ -1,0 +1,62 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroSection from '../components/HeroSection.astro';
+import ServicesPreview from '../components/ServicesPreview.astro';
+import WhyChooseUs from '../components/WhyChooseUs.astro';
+import PortfolioPreview from '../components/PortfolioPreview.astro';
+import TestimonialsSection from '../components/TestimonialsSection.astro';
+import CTASection from '../components/CTASection.astro';
+import { generateLocalBusinessSchema, generateWebSiteSchema, generateFAQSchema } from '../lib/seo';
+
+const homeFaqs = [
+  { question: 'Koje stolarske usluge nudite?', answer: 'Nudimo izradu kuhinja po mjeri, namještaja po mjeri, unutarnjih vrata, drvenih prozora, stepenica, podova, pergola i nadstrešnica te restauraciju namještaja.' },
+  { question: 'Na kojem području radite?', answer: 'Sjedište nam je u Donjoj Stubici, a radimo na području cijele Krapinsko-zagorske županije, Zagreba i šire. Za veće projekte dolazimo i na područje cijele Hrvatske.' },
+  { question: 'Koliko iskustva imate?', answer: 'Stolarija Mika ima više od 25 godina iskustva u stolarskom zanatu. Vlasnik Nikola Blagec - Mika je majstor s dugogodišnjim iskustvom i stotinama zadovoljnih klijenata.' },
+  { question: 'Kako mogu zatražiti ponudu?', answer: 'Nazovite nas na 098 407 556 ili ispunite kontakt formu na našoj stranici. Besplatno ćemo doći na mjerenje i pripremiti ponudu bez obveza.' },
+  { question: 'Koje vrste drva koristite?', answer: 'Koristimo najkvalitetnije vrste drva: hrast, bukvu, jasen, orah, bor i ariš. Vrsta drva se bira ovisno o namjeni i vašim preferencijama.' },
+];
+
+const structuredData = [
+  generateLocalBusinessSchema(),
+  generateWebSiteSchema(),
+  generateFAQSchema(homeFaqs),
+];
+---
+
+<BaseLayout
+  title="Stolarija Mika - Stolarski obrt s 25 godina iskustva | Donja Stubica"
+  description="Stolarija Mika - stolarski obrt s 25 godina iskustva. Kuhinje, namještaj, vrata, prozori i stepenice po mjeri od kvalitetnog drva. Donja Stubica, Zagorje."
+  structuredData={structuredData}
+>
+  <HeroSection />
+  <ServicesPreview />
+  <WhyChooseUs />
+  <PortfolioPreview />
+  <TestimonialsSection />
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-background">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-14">
+        <span class="text-primary text-sm font-semibold uppercase tracking-widest">FAQ</span>
+        <h2 class="font-heading text-3xl sm:text-4xl text-secondary font-bold mt-2 mb-4">Česta pitanja</h2>
+      </div>
+
+      <div class="space-y-4">
+        {homeFaqs.map((faq, index) => (
+          <details class="group bg-card border border-border rounded-xl overflow-hidden">
+            <summary class="flex items-center justify-between cursor-pointer px-6 py-4 font-medium text-secondary hover:text-primary transition-colors list-none">
+              <span>{faq.question}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 ml-4 transition-transform group-open:rotate-180"><path d="m6 9 6 6 6-6"/></svg>
+            </summary>
+            <div class="px-6 pb-4 text-foreground-light leading-relaxed">
+              {faq.answer}
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection />
+</BaseLayout>
