@@ -38,8 +38,8 @@ const icons: Record<string, string> = {
       <h1 class="font-heading text-4xl sm:text-5xl text-secondary font-bold mb-6">{service.name}</h1>
       <p class="text-foreground-light text-lg leading-relaxed max-w-3xl">{service.fullDescription}</p>
 
-      <div class="rounded-xl overflow-hidden mt-8 max-h-[400px]">
-        <img src={`${base}images/services/${service.slug}.png`} alt={service.name} class="w-full h-full object-cover" />
+      <div class="rounded-xl overflow-hidden mt-8 aspect-[16/9]">
+        <img src={`${base}images/services/${service.slug}.jpg`} alt={service.name} class="w-full h-full object-cover" />
       </div>
     </div>
   </section>
