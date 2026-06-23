@@ -1,9 +1,10 @@
 import { GoogleGenAI, Modality } from '@google/genai';
 import fs from 'fs';
 import path from 'path';
+import { config } from 'dotenv';
+config();
 
-const GEMINI_API_KEY = 'AIzaSyBLYzELKAPCYgvmQhHPfk63_3mz5SZD0l0';
-const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const OUTPUT_DIR = path.resolve('public/images');
 

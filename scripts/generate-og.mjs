@@ -1,7 +1,9 @@
 import { GoogleGenAI, Modality } from '@google/genai';
 import fs from 'fs';
+import { config } from 'dotenv';
+config();
 
-const ai = new GoogleGenAI({ apiKey: 'AIzaSyBLYzELKAPCYgvmQhHPfk63_3mz5SZD0l0' });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 async function main() {
   console.log('Generating OG image...');

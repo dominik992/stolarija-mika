@@ -1,8 +1,10 @@
 import { GoogleGenAI, Modality } from '@google/genai';
 import fs from 'fs';
 import path from 'path';
+import { config } from 'dotenv';
+config();
 
-const ai = new GoogleGenAI({ apiKey: 'AIzaSyBLYzELKAPCYgvmQhHPfk63_3mz5SZD0l0' });
+const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 const DOWNLOADS = '/Users/dominikdragicevic/Downloads';
 const OUTPUT = '/Users/dominikdragicevic/projects/stolarija-mika/public/images/gallery';
