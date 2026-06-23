@@ -55,19 +55,121 @@ const structuredData = {
       <!-- Masonry-style gallery -->
       <div class="columns-1 sm:columns-2 lg:columns-3 gap-4 space-y-4">
         {galleryImages.map((img, i) => (
-          <div class="break-inside-avoid group relative overflow-hidden rounded-xl">
+          <div
+            class="break-inside-avoid group relative overflow-hidden rounded-xl cursor-pointer"
+            data-lightbox-trigger
+            data-index={i}
+          >
             <img
               src={img.src}
               alt={img.alt}
               class="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
               loading={i < 6 ? 'eager' : 'lazy'}
             />
-            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300"></div>
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-80 transition-opacity duration-300"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+            </div>
           </div>
         ))}
       </div>
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div id="lightbox" class="fixed inset-0 z-[100] hidden bg-black/95 backdrop-blur-sm">
+    <!-- Close button -->
+    <button id="lb-close" class="absolute top-4 right-4 z-10 text-white/70 hover:text-white p-2 transition-colors" aria-label="Zatvori">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+    </button>
+
+    <!-- Counter -->
+    <div id="lb-counter" class="absolute top-5 left-1/2 -translate-x-1/2 text-white/50 text-sm z-10"></div>
+
+    <!-- Previous button -->
+    <button id="lb-prev" class="absolute left-2 sm:left-6 top-1/2 -translate-y-1/2 z-10 text-white/50 hover:text-white p-3 transition-colors" aria-label="Prethodna">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+    </button>
+
+    <!-- Next button -->
+    <button id="lb-next" class="absolute right-2 sm:right-6 top-1/2 -translate-y-1/2 z-10 text-white/50 hover:text-white p-3 transition-colors" aria-label="Sljedeća">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+    </button>
+
+    <!-- Image container -->
+    <div class="flex items-center justify-center w-full h-full p-12 sm:p-20">
+      <img id="lb-img" src="" alt="" class="max-w-full max-h-full object-contain" />
+    </div>
+  </div>
+
   <CTASection />
 </BaseLayout>
+
+<script define:vars={{ images: galleryImages }}>
+  const lightbox = document.getElementById('lightbox');
+  const lbImg = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  const lbClose = document.getElementById('lb-close');
+  const lbPrev = document.getElementById('lb-prev');
+  const lbNext = document.getElementById('lb-next');
+
+  let current = 0;
+  const total = images.length;
+
+  function show(index) {
+    current = (index + total) % total;
+    lbImg.src = images[current].src;
+    lbImg.alt = images[current].alt;
+    lbCounter.textContent = `${current + 1} / ${total}`;
+  }
+
+  function open(index) {
+    show(index);
+    lightbox.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function close() {
+    lightbox.classList.add('hidden');
+    document.body.style.overflow = '';
+  }
+
+  // Click on thumbnail
+  document.querySelectorAll('[data-lightbox-trigger]').forEach((el) => {
+    el.addEventListener('click', () => {
+      open(parseInt(el.dataset.index, 10));
+    });
+  });
+
+  // Controls
+  lbClose.addEventListener('click', close);
+  lbPrev.addEventListener('click', () => show(current - 1));
+  lbNext.addEventListener('click', () => show(current + 1));
+
+  // Click on backdrop closes
+  lightbox.addEventListener('click', (e) => {
+    if (e.target === lightbox || e.target === lightbox.querySelector('.flex')) {
+      close();
+    }
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (lightbox.classList.contains('hidden')) return;
+    if (e.key === 'Escape') close();
+    if (e.key === 'ArrowLeft') show(current - 1);
+    if (e.key === 'ArrowRight') show(current + 1);
+  });
+
+  // Swipe support for mobile
+  let touchStartX = 0;
+  lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, { passive: true });
+  lightbox.addEventListener('touchend', (e) => {
+    const diff = e.changedTouches[0].screenX - touchStartX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) show(current - 1);
+      else show(current + 1);
+    }
+  }, { passive: true });
+</script>
